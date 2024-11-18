@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+ex00/megaphone
+ex01/phonebook
+.vscode/launch.json
+.vscode/settings.json
