@@ -70,9 +70,9 @@ jobs:
       working-directory: ex02
     
     - name: Run ex02
-      run: ./bank > test.log
+      run: ./bank | awk '{ print $2 }' > output.log
       working-directory: ex02
     
     - name: Diff ex02 output
-      run: diff -s <(sed 's/\[\([0-9]\{8\}\)_\([0-9]\{6\}\)\]//g' 19920104_091532.log) <(sed 's/\[\([0-9]\{8\}\)_\([0-9]\{6\}\)\]//g' test.log)
+      run: cat 19920104_091532.log | awk '{ print $2 }' | diff -s - output.log && rm output.log
       working-directory: ex02
