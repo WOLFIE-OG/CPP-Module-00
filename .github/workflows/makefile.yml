@@ -74,5 +74,5 @@ jobs:
       working-directory: ex02
     
     - name: Diff ex02 output
-      run: diff 19920104_091532.log test.log
+      run: diff <(sed 's/\[\([0-9]\{8\}\)_\([0-9]\{6\}\)\]//g' 19920104_091532.log) <(sed 's/\[\([0-9]\{8\}\)_\([0-9]\{6\}\)\]//g' test.log)
       working-directory: ex02
