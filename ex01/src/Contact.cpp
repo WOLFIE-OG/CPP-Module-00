@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 15:39:43 by otodd             #+#    #+#             */
-/*   Updated: 2024/11/19 14:23:56 by otodd            ###   ########.fr       */
+/*   Created: 2024/11/18 18:10:00 by otodd             #+#    #+#             */
+/*   Updated: 2024/11/19 14:24:00 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#include "../include/Contact.hpp"
 
-#ifndef CONTACT_H
-# define CONTACT_H
-
-class Contact {
-	public:
-		Contact();
-		int	index;
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickname;
-		std::string	phoneNumber;
-		std::string	darkestSecret;
-		bool	isPopulated;
-};
-
-#endif
+Contact::Contact()
+{
+	this->isPopulated = false;
+}

@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:22:38 by otodd             #+#    #+#             */
-/*   Updated: 2024/11/18 17:14:13 by otodd            ###   ########.fr       */
+/*   Updated: 2024/11/19 14:23:33 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,25 @@
 int	main(void)
 {
 	PhoneBook	phonebook;
-	phonebook.Add("Oliver1", "Todd1", "OliverTodd1");
-	phonebook.Add("Oliver2", "Todd2", "OliverTodd2");
-	phonebook.Add("Oliver3", "Todd3", "OliverTodd3");
-	phonebook.Add("Oliver4", "Todd4", "OliverTodd4");
-	phonebook.Add("Oliver5", "Todd5", "OliverTodd5");
-	phonebook.Add("Oliver6", "Todd6", "OliverTodd6");
-	phonebook.Add("Oliver7", "Todd7", "OliverTodd7");
-	phonebook.Add("Oliver8", "Todd8", "OliverTodd8");
-	phonebook.Add("asdasdas", "asdasdadasdsadsadasdssad", "sasdasdasdadasdsad");
-	phonebook.Display();
-	return (0);
+	std::string	cmd;
+
+	while (true)
+	{
+		cmd.clear();
+		std::cout << "═ Enter command (ADD, SEARCH, EXIT): ";
+		std::getline(std::cin, cmd);
+		if (cmd.empty())
+			continue;
+		phonebook.lowerCommand(&cmd);
+		if (cmd.compare("add") == 0)
+			phonebook.addCommand();
+		else if (cmd.compare("search") == 0)
+			phonebook.searchCommand();
+		else if (cmd.compare("exit") == 0)
+			break;
+		else
+			std::cout << "═ Not a valid command." << '\n';
+		std::cout << std::endl;
+	}
+	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 #    By: otodd <otodd@student.42london.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:23:16 by otodd             #+#    #+#              #
-#    Updated: 2024/11/18 16:37:44 by otodd            ###   ########.fr        #
+#    Updated: 2024/11/18 18:10:43 by otodd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_DIR 	= 	src
 OBJ_DIR 	= 	obj
 
 SRC			=	$(SRC_DIR)/main.cpp \
+				$(SRC_DIR)/Contact.cpp \
 				$(SRC_DIR)/PhoneBook.cpp
 
 OBJS 		= 	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)

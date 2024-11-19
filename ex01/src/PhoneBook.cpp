@@ -6,44 +6,32 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:51 by otodd             #+#    #+#             */
-/*   Updated: 2024/11/18 17:15:56 by otodd            ###   ########.fr       */
+/*   Updated: 2024/11/19 14:45:50 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/PhoneBook.hpp"
-#include <sstream>
 
 PhoneBook::PhoneBook()
 {
 	this->length = 0;
 	for (int i = 0; i <= 7; i++)
-	{
 		this->contacts[i].index = i;
-		this->contacts[i].firstName = "";
-		this->contacts[i].lastName = "";
-		this->contacts[i].nickname = "";
-		this->contacts[i].isPopulated = false;
-	}
 }
 
-void	PhoneBook::Add(std::string firstName, std::string lastName,
-	std::string nickName)
+void	PhoneBook::add(Contact *contact)
 {
 	int	index;
 	if (this->length >= 7)
 		index = this->length;
 	else
 		index = this->length++;
-	Contact	contact;
-	contact.firstName = firstName;
-	contact.lastName = lastName;
-	contact.nickname = nickName;
-	contact.index = index;
-	contact.isPopulated = true;
-	this->contacts[index] = contact;
+	contact->index = index;
+	contact->isPopulated = true;
+	this->contacts[index] = *contact;
 }
-
-std::string	PhoneBook::Trunc(std::string str)
+    
+std::string	PhoneBook::trunc(std::string str)
 {
 	std::string	tmp = "          ";
 	for (int i = 0; str[i]; i++)
@@ -56,18 +44,100 @@ std::string	PhoneBook::Trunc(std::string str)
 	return (tmp);
 }
 
-void	PhoneBook::Display()
+void	PhoneBook::display(size_t index)
 {
+	if (index > 7)
+	{
+		std::cout << "═  Invalid index." << std::endl;
+		return;
+	}
+	if (this->contacts[index].isPopulated)
+	{
+		std::stringstream tmp;
+		tmp << (this->contacts[index].index + 1);
+		std::cout << '\n' << "╔ " << "Contact Index:          " << tmp.str() << '\n';
+		std::cout << "╟ " << "Contact Firstname:      " << this->contacts[index].firstName << '\n';
+		std::cout << "╟ " << "Contact Lastname:       " << this->contacts[index].lastName << '\n';
+		std::cout << "╟ " << "Contact Nickname:       " << this->contacts[index].nickname << '\n';
+		std::cout << "╟ " << "Contact Phonenumber:    " << this->contacts[index].phoneNumber << '\n';
+		std::cout << "╚ " << "Contact Darkest Secret: " << this->contacts[index].darkestSecret << std::endl;
+	}
+	else
+		std::cout << "═  Contact index doesn't yet exist." << std::endl;
+}
+
+bool	PhoneBook::display()
+{
+	if (!this->length)
+	{
+		std::cout << "═  No records in phonebook." << std::endl;
+		return (false);
+	}
 	for (int i = 0; i <= 7; i++)
 	{
 		if (this->contacts[i].isPopulated)
 		{
 			std::stringstream tmp;
 			tmp << (this->contacts[i].index + 1);
-			std::cout << this->Trunc(tmp.str());
-			std::cout << " | " << this->Trunc(this->contacts[i].firstName);
-			std::cout << " | " << this->Trunc(this->contacts[i].lastName);
-			std::cout << " | " << this->Trunc(this->contacts[i].nickname) << '\n';
+			std::cout << this->trunc(tmp.str());
+			std::cout << " | " << this->trunc(this->contacts[i].firstName);
+			std::cout << " | " << this->trunc(this->contacts[i].lastName);
+			std::cout << " | " << this->trunc(this->contacts[i].nickname) << '\n';
 		}
+	}
+	std::cout << std::endl;
+	return (true);
+}
+
+static void	getInput(std::string *input, std::string prompt)
+{
+	std::cout << prompt;
+	while (true)
+	{
+		std::getline(std::cin, (*input));
+		if ((*input).empty())
+		{
+			std::cout << "═ Field cannot be empty.\n";
+			std::cout << prompt;
+		}
+		else
+			break;
+	}
+}
+
+void	PhoneBook::addCommand()
+{
+	Contact	contact;
+	getInput(&contact.firstName, "╔ Firstname: ");
+	getInput(&contact.lastName, "╟ Lastname: ");
+	getInput(&contact.nickname, "╟ Nickname: ");
+	getInput(&contact.phoneNumber, "╟ Phone Number: ");
+	getInput(&contact.darkestSecret, "╚ Darkest Secret: ");
+	this->add(&contact);
+}
+
+void	PhoneBook::searchCommand()
+{
+	std::string	queryStr;
+	int			queryInt;
+
+	if (this->display())
+	{
+		std::cout << "═ Enter index of contact to show: ";
+		std::getline(std::cin, queryStr);
+		queryInt = atoi(queryStr.c_str());
+		if (queryInt <= 0)
+			std::cout << "═  Invalid number. Please enter a valid number." << std::endl;
+		else
+			this->display(queryInt - 1);
+	}
+}
+
+void	PhoneBook::lowerCommand(std::string *str)
+{
+	for (size_t i = 0; i <= (*str).length(); i++)
+	{
+		if (isalpha((*str)[i]))
+			(*str)[i] = tolower((*str)[i]);
 	}
 }
