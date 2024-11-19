@@ -1,0 +1,78 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@main
+
+    - name: Run tree
+      run: tree
+
+    - name: Make ex00
+      run: make
+      working-directory: ex00
+
+    - name: Re-make ex00
+      run: make re
+      working-directory: ex00
+
+    - name: View contents of ex00
+      run: nm -C megaphone
+      working-directory: ex00
+    
+    - name: Run ex00 (No Arg)
+      run: ./megaphone
+      working-directory: ex00
+
+    - name: Run ex00 `shhhhh... I think the students are asleep...`
+      run: ./megaphone "shhhhh... I think the students are asleep..."
+      working-directory: ex00
+
+    - name: Run ex00 `Damnit " ! " "Sorry students, I thought this thing was off."`
+      run: ./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
+      working-directory: ex00
+    
+    - name: Make ex01
+      run: make
+      working-directory: ex01
+
+    - name: Re-make ex01
+      run: make re
+      working-directory: ex01
+
+    - name: View contents of ex01
+      run: nm -C phonebook
+      working-directory: ex01
+    
+    - name: Run ex01
+      run: echo "ex01 tests require manual interaction!"
+      working-directory: ex01
+
+    - name: Make ex02
+      run: make
+      working-directory: ex02
+
+    - name: Re-make ex02
+      run: make re
+      working-directory: ex02
+
+    - name: View contents of ex02
+      run: nm -C bank
+      working-directory: ex02
+    
+    - name: Run ex02
+      run: ./bank > test.log
+      working-directory: ex02
+    
+    - name: Diff ex02 output
+      run: diff 19920104_091532.log test.log
+      working-directory: ex02
