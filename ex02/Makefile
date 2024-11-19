@@ -6,7 +6,7 @@
 #    By: otodd <otodd@student.42london.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:23:16 by otodd             #+#    #+#              #
-#    Updated: 2024/11/19 14:57:05 by otodd            ###   ########.fr        #
+#    Updated: 2024/11/19 17:09:43 by otodd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CYAN		=	\033[1;36m
 NC			=	\033[0m
 
 CC			=	g++
-CXXFLAGS 	= 	-Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS 	= 	-Wall -Wextra -Werror -std=c++98
 NAME		=	bank
 
 INCLUDE_DIR	=	include
