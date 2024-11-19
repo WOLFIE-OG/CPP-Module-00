@@ -6,7 +6,7 @@
 #    By: otodd <otodd@student.42london.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:23:16 by otodd             #+#    #+#              #
-#    Updated: 2024/11/19 15:03:16 by otodd            ###   ########.fr        #
+#    Updated: 2024/11/19 14:57:05 by otodd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,15 @@ CYAN		=	\033[1;36m
 NC			=	\033[0m
 
 CC			=	g++
-CXXFLAGS 	= 	-Wall -Wextra -Werror -std=c++98
-NAME		=	phonebook
+CXXFLAGS 	= 	-Wall -Wextra -Werror -std=c++98 -g
+NAME		=	bank
 
 INCLUDE_DIR	=	include
 SRC_DIR 	= 	src
 OBJ_DIR 	= 	obj
 
-SRC			=	$(SRC_DIR)/main.cpp \
-				$(SRC_DIR)/Contact.cpp \
-				$(SRC_DIR)/PhoneBook.cpp
+SRC			=	$(SRC_DIR)/tests.cpp \
+				$(SRC_DIR)/Account.cpp
 
 OBJS 		= 	$(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 HEADERS		=	-I$(INCLUDE_DIR)
