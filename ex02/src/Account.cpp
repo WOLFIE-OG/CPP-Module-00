@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 14:49:35 by otodd             #+#    #+#             */
-/*   Updated: 2024/11/19 16:27:23 by otodd            ###   ########.fr       */
+/*   Updated: 2024/12/02 17:42:14 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	Account::_nbAccounts = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
-int	Account::_totalAmount= 0;
+int	Account::_totalAmount = 0;
 
 Account::Account()
 {
