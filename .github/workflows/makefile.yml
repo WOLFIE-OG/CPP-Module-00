@@ -30,15 +30,27 @@ jobs:
       working-directory: ex00
     
     - name: Run ex00 (No Arg)
-      run: ./megaphone
+      run: ./megaphone > out_1.txt && echo "* LOUD AND UNBEARABLE FEEDBACK NOISE *" > in_1.txt
+      working-directory: ex00
+    
+    - name: diff ex00
+      run: diff -s out_1.txt in_1.txt && rm *.txt
       working-directory: ex00
 
     - name: Run ex00 `shhhhh... I think the students are asleep...`
-      run: ./megaphone "shhhhh... I think the students are asleep..."
+      run: ./megaphone "shhhhh... I think the students are asleep..." > out_2.txt && echo "SHHHHH... I THINK THE STUDENTS ARE ASLEEP..." > in_2.txt
+      working-directory: ex00
+    
+    - name: diff ex00
+      run: diff -s out_2.txt in_2.txt && rm *.txt
       working-directory: ex00
 
     - name: Run ex00 `Damnit " ! " "Sorry students, I thought this thing was off."`
-      run: ./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
+      run: ./megaphone Damnit " ! " "Sorry students, I thought this thing was off." > out_3.txt && echo "DAMNIT ! SORRY STUDENTS, I THOUGHT THIS THING WAS OFF." > in_3.txt
+      working-directory: ex00
+    
+    - name: diff ex00
+      run: diff -s out_3.txt in_3.txt && rm *.txt
       working-directory: ex00
     
     - name: Make ex01

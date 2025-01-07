@@ -36,3 +36,4 @@ ex01/phonebook
 ex02/bank
 .vscode/launch.json
 .vscode/settings.json
+.venv

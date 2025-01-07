@@ -6,7 +6,7 @@
 #    By: otodd <otodd@student.42london.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 11:56:46 by otodd             #+#    #+#              #
-#    Updated: 2024/12/06 14:42:09 by otodd            ###   ########.fr        #
+#    Updated: 2025/01/07 13:36:12 by otodd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,15 +63,15 @@ file_handler.setFormatter(
 file_handler.setLevel(logging.DEBUG)
 logger.addHandler(file_handler)
 
+logger.debug("Checking tmp folder")
+if not os.path.exists(TMP_DIR):
+    os.mkdir(TMP_DIR)
+
 logger.debug("Fetching repo url")
 repo_url =  REPO.remotes[0].url
 repo_dir = Path(TMP_DIR.__str__() + '/' + os.getcwd().split("/")[0] + uuid4().__str__())
 logger.debug("Creating repo dir")
 os.mkdir(repo_dir)
-
-logger.debug("Checking tmp folder")
-if not os.path.exists(TMP_DIR):
-    os.mkdir(TMP_DIR)
 
 logger.debug("Checking workflows folder")
 if not os.path.exists(WORKFLOW_DIR):

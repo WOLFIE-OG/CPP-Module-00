@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:51 by otodd             #+#    #+#             */
-/*   Updated: 2024/11/19 14:45:50 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/07 13:43:44 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	PhoneBook::display(size_t index)
 		std::cout << "╟ " << "Contact Firstname:      " << this->contacts[index].firstName << '\n';
 		std::cout << "╟ " << "Contact Lastname:       " << this->contacts[index].lastName << '\n';
 		std::cout << "╟ " << "Contact Nickname:       " << this->contacts[index].nickname << '\n';
-		std::cout << "╟ " << "Contact Phonenumber:    " << this->contacts[index].phoneNumber << '\n';
+		std::cout << "╟ " << "Contact Phone Number:   " << this->contacts[index].phoneNumber << '\n';
 		std::cout << "╚ " << "Contact Darkest Secret: " << this->contacts[index].darkestSecret << std::endl;
 	}
 	else
