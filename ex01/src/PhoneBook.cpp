@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:51 by otodd             #+#    #+#             */
-/*   Updated: 2025/01/07 14:08:19 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/07 15:00:49 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,22 @@ PhoneBook::PhoneBook()
 void	PhoneBook::add(Contact *contact)
 {
 	int	index;
-	if (this->length >= 7)
-		index = this->length;
+	bool reindex = false;
+	if (this->length >= 8)
+	{
+		for (int i = 7; i > 0; i--)
+			this->contacts[i] = this->contacts[i - 1];
+		index = 0;
+		reindex = true;
+	}
 	else
 		index = this->length++;
 	contact->index = index;
 	contact->isPopulated = true;
 	this->contacts[index] = *contact;
+	if (reindex)
+		for (int i = 0; i <= 7; i++)
+			this->contacts[i].index = i;
 }
     
 std::string	PhoneBook::trunc(std::string str)
@@ -130,7 +139,7 @@ void	PhoneBook::searchCommand()
 		std::getline(std::cin, queryStr);
 		queryInt = atoi(queryStr.c_str());
 		if (queryInt <= 0)
-			std::cout << "═  Invalid number. Please enter a valid number." << std::endl;
+			std::cout << "═  Invalid index." << std::endl;
 		else
 			this->display(queryInt - 1);
 	}

@@ -6,7 +6,7 @@
 #    By: otodd <otodd@student.42london.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 14:23:16 by otodd             #+#    #+#              #
-#    Updated: 2024/12/06 14:37:53 by otodd            ###   ########.fr        #
+#    Updated: 2025/01/07 14:38:40 by otodd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CYAN		=	\033[1;36m
 NC			=	\033[0m
 
 CC			=	c++
-CXXFLAGS 	= 	-Wall -Wextra -Werror -std=c++98
+CXXFLAGS 	= 	-Wall -Wextra -Werror -std=c++98 -g
 NAME		=	phonebook
 
 INCLUDE_DIR	=	include

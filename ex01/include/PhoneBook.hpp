@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:35:11 by otodd             #+#    #+#             */
-/*   Updated: 2025/01/07 13:53:03 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/07 14:59:32 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 
 class PhoneBook {
 	public:
-		Contact	contacts[8];
 		void	addCommand();
 		void	searchCommand();
 		void	lowerCommand(std::string *str);
 		PhoneBook();
 	private:
 		size_t	length;
+		Contact	contacts[8];
 		std::string	trunc(std::string str);
 		void	add(Contact *contact);
 		bool	display();
