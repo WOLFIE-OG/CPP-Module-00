@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:51 by otodd             #+#    #+#             */
-/*   Updated: 2025/01/07 13:43:44 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/07 14:08:19 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ void	PhoneBook::add(Contact *contact)
     
 std::string	PhoneBook::trunc(std::string str)
 {
-	std::string	tmp = "          ";
+	std::string	tmp = "";
 	for (int i = 0; str[i]; i++)
 	{
 		if (i == 9)
-			tmp[i] = '.';
+		{
+			tmp += '.';
+			break;
+		}
 		else
-			tmp[i] = str[i];
+			tmp += str[i];
 	}
 	return (tmp);
 }
@@ -79,10 +82,10 @@ bool	PhoneBook::display()
 		{
 			std::stringstream tmp;
 			tmp << (this->contacts[i].index + 1);
-			std::cout << this->trunc(tmp.str());
-			std::cout << " | " << this->trunc(this->contacts[i].firstName);
-			std::cout << " | " << this->trunc(this->contacts[i].lastName);
-			std::cout << " | " << this->trunc(this->contacts[i].nickname) << '\n';
+			std::cout << std::right << std::setw(10) << this->trunc(tmp.str());
+			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].firstName);
+			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].lastName);
+			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].nickname) << '\n';
 		}
 	}
 	std::cout << std::endl;
