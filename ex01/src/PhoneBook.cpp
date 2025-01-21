@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:51 by otodd             #+#    #+#             */
-/*   Updated: 2025/01/07 15:00:49 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/21 14:35:36 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,11 @@ PhoneBook::PhoneBook()
 
 void	PhoneBook::add(Contact *contact)
 {
-	int	index;
-	bool reindex = false;
-	if (this->length >= 8)
-	{
-		for (int i = 7; i > 0; i--)
-			this->contacts[i] = this->contacts[i - 1];
-		index = 0;
-		reindex = true;
-	}
-	else
-		index = this->length++;
-	contact->index = index;
 	contact->isPopulated = true;
-	this->contacts[index] = *contact;
-	if (reindex)
-		for (int i = 0; i <= 7; i++)
-			this->contacts[i].index = i;
+	this->contacts[this->length % 8] = *contact;
+	for (int i = 0; i <= 7; i++)
+		this->contacts[i].index = i;
+	this->length++;
 }
     
 std::string	PhoneBook::trunc(std::string str)
@@ -85,19 +73,21 @@ bool	PhoneBook::display()
 		std::cout << "═  No records in phonebook." << std::endl;
 		return (false);
 	}
+	std::cout << " ___________________________________________________" << std::endl;
+	std::cout << "|    Index   | First Name |  Last Name |  Nickname  |" << std::endl;
 	for (int i = 0; i <= 7; i++)
 	{
 		if (this->contacts[i].isPopulated)
 		{
 			std::stringstream tmp;
-			tmp << (this->contacts[i].index + 1);
-			std::cout << std::right << std::setw(10) << this->trunc(tmp.str());
+			tmp << "| " << std::right << std::setw(10) << (this->contacts[i].index + 1);
+			std::cout << std::right << std::setw(10) << tmp.str();
 			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].firstName);
 			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].lastName);
-			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].nickname) << '\n';
+			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].nickname) << " |" << std::endl;
 		}
 	}
-	std::cout << std::endl;
+	std::cout << " ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" << std::endl;
 	return (true);
 }
 

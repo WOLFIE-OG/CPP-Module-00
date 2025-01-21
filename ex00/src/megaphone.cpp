@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:22:38 by otodd             #+#    #+#             */
-/*   Updated: 2024/11/18 15:16:47 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/21 13:52:02 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	main(int argc, char **argv)
 			std::cout << argv[i];
 		}
 	}
-	std::cout << '\n';
+	std::cout << std::endl;
 	return (0);
 }
