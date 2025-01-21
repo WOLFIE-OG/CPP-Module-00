@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:51 by otodd             #+#    #+#             */
-/*   Updated: 2025/01/21 14:35:36 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/21 14:41:01 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,21 @@ bool	PhoneBook::display()
 		std::cout << "═  No records in phonebook." << std::endl;
 		return (false);
 	}
-	std::cout << " ___________________________________________________" << std::endl;
-	std::cout << "|    Index   | First Name |  Last Name |  Nickname  |" << std::endl;
+	std::cout << " ___________________________________________" << std::endl;
+	std::cout << "|     Index|First Name|Last Name |Nickname  |" << std::endl;
 	for (int i = 0; i <= 7; i++)
 	{
 		if (this->contacts[i].isPopulated)
 		{
 			std::stringstream tmp;
-			tmp << "| " << std::right << std::setw(10) << (this->contacts[i].index + 1);
+			tmp << "|" << std::right << std::setw(10) << (this->contacts[i].index + 1);
 			std::cout << std::right << std::setw(10) << tmp.str();
-			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].firstName);
-			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].lastName);
-			std::cout << " | " << std::right << std::setw(10) << this->trunc(this->contacts[i].nickname) << " |" << std::endl;
+			std::cout << "|" << std::right << std::setw(10) << this->trunc(this->contacts[i].firstName);
+			std::cout << "|" << std::right << std::setw(10) << this->trunc(this->contacts[i].lastName);
+			std::cout << "|" << std::right << std::setw(10) << this->trunc(this->contacts[i].nickname) << "|" << std::endl;
 		}
 	}
-	std::cout << " ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" << std::endl;
+	std::cout << " ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" << std::endl;
 	return (true);
 }
 
