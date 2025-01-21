@@ -6,7 +6,7 @@
 /*   By: otodd <otodd@student.42london.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:22:38 by otodd             #+#    #+#             */
-/*   Updated: 2025/01/21 13:52:02 by otodd            ###   ########.fr       */
+/*   Updated: 2025/01/21 14:45:48 by otodd            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	main(int argc, char **argv)
 		for (int i = 1; argv[i]; i++)
 		{
 			for (int j = 0; argv[i][j]; j++)
-				if (isalpha(argv[i][j]))
-					argv[i][j] = toupper(argv[i][j]);
+				argv[i][j] = toupper(argv[i][j]);
 			std::cout << argv[i];
 		}
 	}
